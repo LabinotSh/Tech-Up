@@ -3,21 +3,21 @@ package org.auk.todo.model;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.Set;
+import java.util.List;
 
 @Data
 @Entity
-@Table(name = "labels")
+@Table(name = "label")
 public class Label {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long id;
-    String name;
-    String slug;
+    private long id;
+    private String name;
+    private String slug;
 
     @OneToMany(mappedBy = "label")
-    Set<Todo> todos;
+    List<Todo> todos;
 
 
 }

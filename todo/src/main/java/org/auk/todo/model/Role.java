@@ -3,19 +3,19 @@ package org.auk.todo.model;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.Set;
+import java.util.List;
 
 @Data
 @Entity
-@Table(name = "roles")
+@Table(name = "role")
 public class Role {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="role_id")
+    private long id;
     private String role;
-    @OneToMany(mappedBy = "role")
-    Set<User> users;
+
 
 }
 
