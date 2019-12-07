@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Blog Project</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	    <link href="../../webjars/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+	    <link href="../../css/standard.css" rel="stylesheet">
+</head>
+<body>
+	
+	  	<nav class="navbar navbar-light bg-transparent">
+		  <form class="form-inline">
+		    <a th:href="@{/}"><button class="btn btn-outline-primary" type="button"><strong>Back to Home Page</strong></button></a>
+		    <a th:href="@{/tasks/new}"><button class="btn btn-outline-success" type="button"><strong>Submit a New To-Do Task</strong></button></a>
+		  </form>
+		</nav>
+	
+	<script src="../../webjars/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script src="../../webjars/jquery/1.9.1/jquery.min.js"></script>
+
+
+</body>
+</html>

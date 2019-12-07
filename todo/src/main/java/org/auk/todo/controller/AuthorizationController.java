@@ -1,0 +1,48 @@
+package org.auk.todo.controller;
+
+import org.auk.todo.model.User;
+import org.auk.todo.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import javax.validation.Valid;
+
+    @Controller
+    public class AuthorizationController {
+
+        @Autowired
+        private UserService userService;
+
+        @RequestMapping(value="/login")
+        public String login(){
+            return "login";
+        }
+
+        @RequestMapping(value="/signup")
+        public String registration(Model model){
+            User user = new User();
+            model.addAttribute("user", user);
+            return "registration";
+        }
+
+        @PostMapping(value = "/signup")
+        public String createNewUser(@Valid User user, BindingResult bindingResult, Model model) {
+            User userExists = userService.findByUsername(user.getUsername());
+            if (userExists != null) {
+                bindingResult.rejectValue("username", "error.user", "Username is already taken");
+            }
+            if (!bindingResult.hasErrors()) {
+                userService.saveNewUser(user);
+                model.addAttribute("successMessage", "Sign up successful!");
+                model.addAttribute("user", new User());
+            }
+            return "registration";
+        }
+    }
+

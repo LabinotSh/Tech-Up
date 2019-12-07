@@ -1,0 +1,27 @@
+body, html {
+  height: 100%;
+}
+.container {
+ 
+  background-image: url("https://image.freepik.com/free-photo/top-view-desk-top-with-office-items-hero-image-design-header-with-copy-space_1423-36.jpg");
+
+  
+  height: 100%;
+
+
+  background-position: center;
+  background-repeat: repeat-y;
+  background-size: cover;
+}
+
+p {
+ white-space: nowrap;
+ text-overflow: ellipsis;
+ overflow: hidden;
+}
+
+h4 {
+ white-space: nowrap;
+ text-overflow: ellipsis;
+ overflow: hidden;
+}

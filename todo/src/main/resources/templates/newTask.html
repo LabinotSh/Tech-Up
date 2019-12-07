@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<!-- <html xmlns:th="http://www.thymeleaf.org"
+		xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"> -->
+<head>
+<title>Create a New To-Do Task</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="../../webjars/bootstrap/4.0.0/css/bootstrap.min.css"
+	rel="stylesheet">
+<link href="../../standard.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container p-3 mb-2 bg-light text-dark">
+		<div th:replace="fragments/navbar"></div>
+		<h3>Please use the form below to submit a To-Do Task:</h3>
+		<form action="#" th:action="@{/todos/new}" th:object="${todo}"
+			method="post">
+			<div th:replace="fragments/taskForm :: taskForm"></div>
+			<button class="btn btn-primary">Submit Your To-Do Task</button>
+		</form>
+		<!-- display the value of ${successMessage} attribute added to the model in the TaskController method for @PostMapping(value = "/tasks")
+				after ${task} object passed as a parameter into this method is saved to the TaskRepository by taskService.save(task); -->
+		<div th:if="${successMessage}">
+			<h3>
+				<span class="text-success" th:utext="${successMessage}"></span>
+			</h3>
+		</div>
+	</div>
+	<div th:replace="/fragments/styling :: body-links"></div>
+</body>
+</html>

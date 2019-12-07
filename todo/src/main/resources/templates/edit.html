@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+<title>Update To-Do Task</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="../../webjars/bootstrap/4.0.0/css/bootstrap.min.css"
+	rel="stylesheet">
+<link href="../../standard.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container p-3 mb-2 bg-light text-dark">
+		<div th:replace="fragments/navbar"></div>
+		<h3>Please use the form below to update a To-Do Task:</h3>
+		<form action="#" th:action="@{'/todos/update/{id}'(id=${todo.id})}"
+			th:object="${todo}" th:method="put">
+			<div th:replace="fragments/taskForm :: taskForm"></div>
+			<button class="btn btn-success">Submit Your Updated To-Do
+				Task</button>
+		</form>
+	</div>
+	<div th:replace="/fragments/styling :: body-links"></div>
+</body>
+</html>
