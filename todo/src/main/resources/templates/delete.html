@@ -9,6 +9,7 @@
 <link href="../../webjars/bootstrap/4.0.0/css/bootstrap.min.css"
 	rel="stylesheet">
 <link href="../../standard.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
 	<div class="container p-3 mb-2 bg-light text-dark">
@@ -22,10 +23,9 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h3 th:text="${todo.title}"></h3>
-						<h5 th:text="${task.description}"></h5>
+						<h5 th:text="${todo.description}"></h5>
 					</div>
 					<div class="panel-body">
-						<strong><p th:text="${todo.user}" /></strong>
 						<p th:text="${todo.status}" /></p>
 					</div>
 					<div class="panel-footer">

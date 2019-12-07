@@ -3,7 +3,7 @@ body, html {
 }
 .container {
  
-  background-image: url("https://image.freepik.com/free-photo/top-view-desk-top-with-office-items-hero-image-design-header-with-copy-space_1423-36.jpg");
+  background-image: transparent url('../img/todo.jpg');
 
   
   height: 100%;

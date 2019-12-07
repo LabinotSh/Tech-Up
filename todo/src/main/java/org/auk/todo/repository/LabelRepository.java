@@ -2,10 +2,14 @@ package org.auk.todo.repository;
 
 import org.auk.todo.model.Label;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
+@Repository
 public interface LabelRepository extends JpaRepository<Label,Long> {
 
-    Optional<Label> findBySlug(String slug);
+    public List<Label> findBySlug(String slug);
+
 }

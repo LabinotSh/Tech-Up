@@ -1,5 +1,6 @@
 package org.auk.todo.repository;
 
+import org.auk.todo.model.Label;
 import org.auk.todo.model.Todo;
 import org.auk.todo.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -12,4 +13,6 @@ public interface TodoRepository extends JpaRepository<Todo,Long> {
     List<Todo> findAllByOrderByCreatedAtDesc();
     public List<Todo> findByTitleLike(String title);
     public List<Todo> findAllByUser(User user);
+    public List<Todo> findAllByLabel(Label label);
+    public List<Todo> findByPriority(int priority);
 }

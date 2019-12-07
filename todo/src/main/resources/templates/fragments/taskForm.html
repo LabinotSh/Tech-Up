@@ -20,11 +20,17 @@
  			<label for="description">Description</label>
  			<input type="text" class="form-control" placeholder="Description..." th:field="*{description}" />
  		</div>
- 		
+
  		<div class="form-group">
  			<label for="creator">Creator</label>
- 			<input type="text" class="form-control" placeholder="Your Name Here..." th:field="*{creator}" />
+ 			<input type="text" class="form-control" placeholder="Your Name Here..." th:field="*{user}" />
  		</div>
+
+		<div class="form-group">
+			<label for="priority">Priority</label>
+			<input type="number" class="form-control" placeholder="priority" th:field="*{priority}" />
+		</div>
+
  		
  		<div class="form-group">
  			<label for="status">Status</label>
