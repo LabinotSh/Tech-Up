@@ -60,14 +60,20 @@ public class TodoController {
     }
 
     //Filtering by priority
-    @GetMapping(value = {"/users/todos/priority"})
-    public String viewByPriority(@PathVariable Long id, Model model, Todo todo){
-        List<Todo> todos = todoService.findByPriority(todo.getPriority());
+    @GetMapping(value = {"/users/todos/{priority}"})
+    public String viewByPriority(@PathVariable Long id, Model model, Todo todo,int priority){
+        List<Todo> todos = todoService.findByPriority(priority);
         model.addAttribute("todo",todos);
         return "index"; //todo
     }
 
     @GetMapping(value = {"/users/todos/update/{id}"})
+    public String update(@PathVariable Long id,Model model){
+        model.addAttribute("todo",todoService.findById(id));
+        return "edit";
+    }
+
+    @PostMapping(value = {"/users/todos/update/{id}"})
     public String getEditPage(@PathVariable Long id,Todo todo, Model model){
         Todo original = todoService.findById(id);
         original.setTitle(todo.getTitle());

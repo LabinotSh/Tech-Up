@@ -13,19 +13,19 @@
 <body>
 	<div class="container">
 		<div th:replace="fragments/navbar"></div>
-		<h2>Todo List</h2>
+		<h3>Todo cards </h3>
 		<div class="row">
 			<div th:each="do:${todoList}">
 				<div class="col-sm-8">
 					<div class="row">
 						<div class="card text-center bg-light mb-3 text-truncate"
 							style="width: 25rem;">
-							<div class="card-header">
+							<div class="card-header" style="background-color:#ADADE6;">
 								<h4 class="card-title" th:text="${do.title}"></h4>
-								<p class="card-text" th:text="${do.description}"></p>
 							</div>
-							<div class="card-body">
-								<p class="card-text" th:text="${do.status}" /></p>
+							<div class="card-body" style="background-color:#C3C3E9;">
+								<p class="card-text" th:text="${do.description}"></p>
+								<p class="card-text" th:text="${do.status}" style="color:red;" /></p>
 
 								<div class="btn-group">
 									<a th:href="@{'/users/todos/view/{id}'(id=${do.id})}">

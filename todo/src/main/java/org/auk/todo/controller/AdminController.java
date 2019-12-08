@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -42,7 +43,7 @@ public class AdminController {
         model.addAttribute("user", userService.findById(id));
         return "userdelete";
     }
-    @DeleteMapping(value = {"/admin/delete/{id}"})
+    @PostMapping(value = {"/admin/delete/{id}"})
     // @RequestMapping(value = "/blog_posts/{id}", method = RequestMethod.DELETE)
     public String deletePostWithId(@PathVariable Long id, Model model) {
         userService.deleteById(id);
