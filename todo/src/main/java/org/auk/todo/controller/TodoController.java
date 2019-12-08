@@ -30,37 +30,44 @@ public class TodoController {
         this.todoService = todoService;
     }
 
-    @GetMapping(value={"/todos",""})
+    @GetMapping(value={"/users/todos",""})
     public String getIndex(Model model){
         List<Todo> todos = todoService.findAll();
         model.addAttribute("todoList",todos);
         return "index";
     }
 
-    @GetMapping(value ={"/todos/view/{id}"})
+    @GetMapping("/users/{username}/todos")
+    public List<Todo> getAllTodos(@PathVariable String username,User user){
+         User us =  userService.findByUsername(username);
+        return todoService.findAllByUser(us);
+
+    }
+
+    @GetMapping(value ={"/users/todos/view/{id}"})
     public String viewTodo (@PathVariable Long id, Model model){
         model.addAttribute("todo",todoService.findById(id));
         return "view";
     }
 
     //Filtering by label
-    @GetMapping(value = {"todos/label/{slug}"})
+    @GetMapping(value = {"/users/todos/label/{slug}"})
     public String viewTodoByLabel(@PathVariable Model model, Label label,String slug){
          List<Label> labels = labelService.findBySlug(slug);
         List<Todo> todos = todoService.findAllByLabel(label);
         model.addAttribute("todo",todos);
-        return "label"; //todo
+        return "index"; //todo
     }
 
     //Filtering by priority
-    @GetMapping(value = {"todos/priority"})
+    @GetMapping(value = {"/users/todos/priority"})
     public String viewByPriority(@PathVariable Long id, Model model, Todo todo){
         List<Todo> todos = todoService.findByPriority(todo.getPriority());
         model.addAttribute("todo",todos);
-        return "priority"; //todo
+        return "index"; //todo
     }
 
-    @GetMapping(value = {"/todos/update/{id}"})
+    @GetMapping(value = {"/users/todos/update/{id}"})
     public String getEditPage(@PathVariable Long id,Todo todo, Model model){
         Todo original = todoService.findById(id);
         original.setTitle(todo.getTitle());
@@ -73,13 +80,12 @@ public class TodoController {
         return "result";
     }
 
-    @GetMapping(value={"todos/delete/{id}"})
+    @GetMapping(value={"/users/todos/delete/{id}"})
     public String getDeletePage(@PathVariable Long id, Model model){
         model.addAttribute("todo", todoService.findById(id));
         return "delete";
     }
-    @DeleteMapping("/todos/delete/{id}")
-    //@RequestMapping(value = "/blog_posts/{id}", method = RequestMethod.DELETE)
+    @PostMapping(value = "/users/todos/delete/{id}")
     public String deletePostWithId(@PathVariable Long id, Model model) {
         todoService.deleteById(id);
         List<Todo> todos = todoService.findAll();
@@ -87,14 +93,14 @@ public class TodoController {
         return "index";
     }
 
-    @GetMapping(value = "/todos/new")
+    @GetMapping(value = "/users/todos/new")
     public String getTaskForm(Model model) {
         User user = userService.getLoggedInUser();
         model.addAttribute("todo", new Todo());
         return "newTask";
     }
 
-    @PostMapping(value = "/todos/new")
+    @PostMapping(value = "/users/todos/new")
     public String createTask(@Valid Todo todo, Model model) {
         //todo.setUser(user);
         todoService.save(todo);

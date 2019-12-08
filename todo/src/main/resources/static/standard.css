@@ -1,16 +1,12 @@
 body, html {
   height: 100%;
+  width: 100%;
 }
 .container {
- 
-  background-image: transparent url('../img/todo.jpg');
-
-  
+  background-image: url('/img/blla.jpg');
   height: 100%;
-
-
   background-position: center;
-  background-repeat: repeat-y;
+  background-repeat: no-repeat;
   background-size: cover;
 }
 

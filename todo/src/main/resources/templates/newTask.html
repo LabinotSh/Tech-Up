@@ -16,7 +16,7 @@
 	<div class="container p-3 mb-2 bg-light text-dark">
 		<div th:replace="fragments/navbar"></div>
 		<h3>Please use the form below to submit a To-Do Task:</h3>
-		<form action="#" th:action="@{/todos/new}" th:object="${todo}"
+		<form action="#" th:action="@{/users/todos/new}" th:object="${todo}"
 			method="post">
 			<div th:replace="fragments/taskForm :: taskForm"></div>
 			<button class="btn btn-primary">Submit Your To-Do Task</button>

@@ -19,7 +19,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h3 th:text="${todo.title}"></h3>
-						<strong><p th:text="${todo.user_id}" /></p></strong>
+
 					</div>
 					<div class="panel-body">
 						<h5 th:text="${todo.description}"></h5>
@@ -29,7 +29,7 @@
 						<div class="btn-group btn-group-justified">
 							<div class="btn-group">
 								<!-- {id} is dynamically generated as for the text above using (id=${task.id})in the literal "@{'path'}" -->
-								<a th:href="@{'/todos/update/{id}'(id=${todo.id})}"><button
+								<a th:href="@{'/users/todos/update/{id}'(id=${todo.id})}"><button
 										class="btn-success">Edit Task</button></a>
 							</div>
 							<div class="btn-group">

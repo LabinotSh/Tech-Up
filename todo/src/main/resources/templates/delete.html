@@ -33,7 +33,7 @@
 						<div class="btn-group btn-group-justified">
 							<div class="btn-group">
 								<form action="#"
-									th:action="@{'/todos/delete/{id}'(id=${todo.id})}"
+									th:action="@{'/users/todos/delete/{id}'(id=${todo.id})}"
 									th:method="delete" class="form-vertical">
 									<div class="form-group">
 										<input type="hidden" name="_method" value="delete" />

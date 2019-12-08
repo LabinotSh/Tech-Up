@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<!-- <html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"> -->
+<head>
+    <title>ToDo Site</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="../../webjars/bootstrap/4.0.0/css/bootstrap.min.css"
+          rel="stylesheet">
+    <link href="../../standard.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <div th:replace="fragments/navbaradmin"></div>
+    <h2>Todo List</h2>
+    <div class="row">
+        <div th:each="do:${userList}">
+            <div class="col-sm-8">
+                <div class="row">
+                    <div class="card text-center bg-light mb-3 text-truncate"
+                         style="width: 25rem;">
+                        <div class="card-header">
+                            <h4 class="card-title" th:text="${do.firstName}"></h4>
+                            <p class="card-text" th:text="${do.username}"></p>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text" th:text="${do.email}" /></p>
+
+                            <div class="btn-group">
+                                <a th:href="@{'/admin/update/{id}'(id=${do.id})}">
+                                    <button type="submit" class="btn-success" th:text="Update">Update
+                                        User</button>
+                                </a>
+                            </div>
+
+                            <div class="btn-group">
+                                <a th:href="@{'/admin/delete/{id}'(id=${do.id})}">
+                                    <button type="submit" class="btn-danger" th:text="Delete">Delete
+                                        User</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="/fragments/styling :: body-links"></div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
 	<title>Blog Project</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -12,10 +12,20 @@
 	  	<nav class="navbar navbar-light bg-transparent">
 		  <form class="form-inline">
 		    <a th:href="@{/}"><button class="btn btn-outline-primary" type="button"><strong>Back to Home Page</strong></button></a>
-		    <a th:href="@{/todos/new}"><button class="btn btn-outline-success" type="button"><strong>Create a New ToDo</strong></button></a>
+		    <a th:href="@{/users/todos/new}"><button class="btn btn-outline-success" type="button"><strong>Create a New ToDo</strong></button></a>
+
+
 		  </form>
+			<div class="col-md-6" id="second" style="float:right;">
+				<form class="form-inline" form-method="post" th:action="@{/logout}">
+					<!--        <button sec:authorize="isAnonymous()"  th:href="@{~/signup}" class="btn btn-outline-info my-2 my-sm-0 btn-sm" type="submit">Signup</button> -->
+					<button sec:authorize="isAuthenticated()" class="btn btn-outline-danger my-2 my-sm-0 btn-sm" type="submit">Logout</button>
+
+				</form>
+
+			</div>
 		</nav>
-	
+
 	<script src="../../webjars/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	<script src="../../webjars/jquery/1.9.1/jquery.min.js"></script>
 		<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

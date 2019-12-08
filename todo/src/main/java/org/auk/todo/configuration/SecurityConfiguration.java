@@ -44,20 +44,28 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http.
-                authorizeRequests()
+                csrf().disable()
+                .authorizeRequests()
                 .antMatchers("/console/**").permitAll()
                 .antMatchers("/login").permitAll()
                 .antMatchers("/signup").permitAll()
                 .antMatchers("/custom.js").permitAll()
                .antMatchers("/custom.css").permitAll()
+                .antMatchers("/todos").authenticated()
+                .antMatchers("/admin/**").hasAuthority("ADMIN")
                 .antMatchers().hasAuthority("USER").anyRequest()
                 .authenticated().and().csrf().disable().formLogin()
                 .loginPage("/login").failureUrl("/login?error=true")
-                .defaultSuccessUrl("/tasks")
+                .defaultSuccessUrl("/users/todos")
                .usernameParameter("username")
                 .passwordParameter("password")
                 .and().logout()
-                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))         .logoutSuccessUrl("/login").and().exceptionHandling();
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))         .logoutSuccessUrl("/login")
+                .and()
+                .rememberMe()
+                .rememberMeParameter("remember-me-option")
+                .rememberMeCookieName("rememberlogin") .tokenValiditySeconds(2592000).key("mySecret")
+                .and().exceptionHandling();
 
         http.headers().frameOptions().disable();
     }

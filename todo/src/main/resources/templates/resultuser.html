@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<!-- <html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"> -->
+<head>
+    <title>ToDo Site</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="../../webjars/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../standard.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+<div class="container text-dark">
+    <div th:replace="fragments/navbaradmin"></div>
+    <div th:if="${successMessage}">
+        <h1 th:utext="${successMessage}"></h1>
+    </div>
+    <!-- <h1>Your Task</h1> -->
+    <div class="row">
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 th:text="${user.firstName}"></h3>
+                    <h3 th:text="${user.lastName}"></h3>
+
+                </div>
+                <div class="panel-body">
+                    <h5 th:text="${user.username}"></h5>
+                </div>
+                <div class="panel-footer">
+                    <h5 th:text="${user.email}" /></h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="/fragments/styling :: body-links"></div>
+</body>
+</html>

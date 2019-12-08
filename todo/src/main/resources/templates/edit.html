@@ -13,7 +13,7 @@
 	<div class="container p-3 mb-2 bg-light text-dark">
 		<div th:replace="fragments/navbar"></div>
 		<h3>Please use the form below to update a To-Do Task:</h3>
-		<form action="#" th:action="@{'/todos/update/{id}'(id=${todo.id})}"
+		<form action="#" th:action="@{'/users/todos/update/{id}'(id=${todo.id})}"
 			th:object="${todo}" th:method="put">
 			<div th:replace="fragments/taskForm :: taskForm"></div>
 			<button class="btn btn-success">Submit Your Updated To-Do

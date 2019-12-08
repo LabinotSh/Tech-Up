@@ -28,21 +28,21 @@
 								<p class="card-text" th:text="${do.status}" /></p>
 
 								<div class="btn-group">
-									<a th:href="@{'/todos/view/{id}'(id=${do.id})}">
+									<a th:href="@{'/users/todos/view/{id}'(id=${do.id})}">
 										<button type="submit" class="btn-primary" th:text="Show">Show
 											To-Do Task</button>
 									</a>
 								</div>
 
 								<div class="btn-group">
-									<a th:href="@{'/todos/update/{id}'(id=${do.id})}">
+									<a th:href="@{'/users/todos/update/{id}'(id=${do.id})}">
 										<button type="submit" class="btn-success" th:text="Update">Update
 											To-Do Task</button>
 									</a>
 								</div>
 
 								<div class="btn-group">
-									<a th:href="@{'/todos/delete/{id}'(id=${do.id})}">
+									<a th:href="@{'/users/todos/delete/{id}'(id=${do.id})}">
 										<button type="submit" class="btn-danger" th:text="Delete">Delete
 											To-Do Task</button>
 									</a>
